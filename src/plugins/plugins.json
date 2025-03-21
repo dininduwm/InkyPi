@@ -29,5 +29,15 @@
         "display_name": "Weather",
         "id": "weather",
         "class": "Weather"
+    },
+    {
+        "display_name": "Web Page",
+        "id": "web_page",
+        "class": "WebPage"
+    },
+    {
+        "display_name": "Shopping List",
+        "id": "shopping_list",
+        "class": "ShoppingList"
     }
 ]

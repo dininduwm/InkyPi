@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping & Inventory Lists</title>
+    <style>
+        /* Reset some default styles */
+        body, h1, ul {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+        
+        /* Page settings for 800x480 resolution */
+        body {
+            width: 800px;
+            height: 480px;
+            background-color: #ffffff; /* White background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Wrapper to hold both lists side by side */
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            justify-content: space-between;
+            border: 1px solid #007bb5; /* More saturated blue border */
+            background-color: #ffffff; /* White background */
+            border-radius: 8px;
+            padding: 5px;
+        }
+
+        /* Individual list style */
+        .list {
+            width: 48%;
+            background-color: #c6e2ff; /* More vibrant light blue background */
+            border-radius: 8px;
+            padding: 10px;
+            box-sizing: border-box;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Title for the lists */
+        .list h2 {
+            text-align: center;
+            color: #007bb5; /* More saturated blue color for titles */
+            font-size: 22px; /* Increased font size for titles */
+            margin-bottom: 10px;
+        }
+
+        /* Style for the list items */
+        ul {
+            list-style-type: none;
+            font-size: 16px; /* Font size remains the same */
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Creates two columns */
+            gap: 10px; /* Space between columns */
+            overflow-y: auto;
+            flex-grow: 1; /* Makes the list items section take the remaining space */
+        }
+
+        ul li {
+            padding: 8px; /* Reduced padding for smaller item boxes */
+            background-color: #ffffff; /* White background for items */
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            color: #007bb5; /* More vibrant blue color for text */
+            text-align: center;
+            font-weight: bold; /* Increased font weight for thicker letters */
+            
+            /* Center the text both horizontally and vertically */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Hover effect for list items */
+        ul li:hover {
+            background-color: #007bb5; /* More saturated blue background on hover */
+            color: #ffffff; /* White text on hover */
+            cursor: pointer;
+        }
+
+        /* To make sure the lists are scrollable if there are too many items */
+        ul {
+            max-height: 85%;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Shopping List -->
+        <div class="list">
+            <h2>Shopping List</h2>
+            <ul>
+                {% for item in shopping_list %}
+                <li> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <!-- Inventory -->
+        <div class="list">
+            <h2>Inventory</h2>
+            <ul>
+                {% for item in inventory_list %}
+                <li> {{ item }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>

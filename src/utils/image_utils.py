@@ -99,3 +99,50 @@ def take_screenshot_html(html_str, dimensions):
         logger.error(f"Failed to take screenshot: {str(e)}")
     
     return image
+
+def take_screenshot_web_page(url, dimensions):
+    image = None
+    try:
+        # Create a temporary output file for the screenshot
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as img_file:
+            img_file_path = img_file.name
+
+        command = [
+            "chromium-browser", url, "--headless=old",
+            f"--screenshot={img_file_path}", f'--window-size={dimensions[0]},{dimensions[1]}',
+            "--no-sandbox", "--disable-gpu", "--disable-software-rasterizer",
+            "--disable-dev-shm-usage", "--hide-scrollbars"
+        ]
+        logger.info(f"{' '.join(command)}")
+        # result = subprocess.run(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        # Use Popen to run the command and get access to the stdout
+        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+
+        # Read the output line by line as the process runs
+        for line in process.stdout:
+            print(line, end="")  # Print each line of the process output
+
+        # Wait for the process to complete
+        process.wait()
+
+        stderr = process.stderr.read()
+        if stderr:
+            logger.warning(''.join(stderr.split('\n')))
+
+        # Check if the process failed or the output file is missing
+        if not os.path.exists(img_file_path):
+            logger.error("Failed to take screenshot:")
+        else:
+            logger.info(f'image: {img_file_path} Exists')
+
+        # Load the image using PIL
+        image = Image.open(img_file_path)
+
+        # Cleanup temp files
+        os.remove(img_file_path)
+
+    except Exception as e:
+        logger.error(f"Failed to take screenshot: {str(e)}")
+    
+    return image

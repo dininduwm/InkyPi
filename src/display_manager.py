@@ -28,5 +28,5 @@ class DisplayManager:
         image = resize_image(image, self.device_config.get_resolution(), image_settings)
 
         # Display the image on the Inky display
-        self.inky_display.set_image(image)
+        self.inky_display.set_image(image, saturation=0.1)
         self.inky_display.show()
