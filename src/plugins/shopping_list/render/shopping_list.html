@@ -11,7 +11,7 @@
             padding: 0;
             font-family: Arial, sans-serif;
         }
-        
+
         /* Page settings for 800x480 resolution */
         body {
             width: 800px;
@@ -30,7 +30,6 @@
             width: 100%;
             height: 100%;
             justify-content: space-between;
-            border: 1px solid #007bb5; /* More saturated blue border */
             background-color: #ffffff; /* White background */
             border-radius: 8px;
             padding: 5px;
@@ -39,9 +38,9 @@
         /* Individual list style */
         .list {
             width: 48%;
-            background-color: #c6e2ff; /* More vibrant light blue background */
+            background-color: #ffffff; /* White background for list */
             border-radius: 8px;
-            padding: 10px;
+            padding: 15px; /* Increased padding */
             box-sizing: border-box;
             height: 100%;
             display: flex;
@@ -51,32 +50,35 @@
         /* Title for the lists */
         .list h2 {
             text-align: center;
-            color: #007bb5; /* More saturated blue color for titles */
-            font-size: 22px; /* Increased font size for titles */
-            margin-bottom: 10px;
+            color: #003366; /* Dark blue for title text */
+            font-size: 30px; /* Increased font size for titles */
+            margin-top: 0px; /* Reduced the top margin */
+            margin-bottom: 10px; /* Balanced bottom margin */
+            padding-top: 0px; /* Added some padding to the top for balance */
+            padding-bottom: 5px; /* Added padding to the bottom for balance */
         }
 
         /* Style for the list items */
         ul {
             list-style-type: none;
-            font-size: 16px; /* Font size remains the same */
             padding: 0;
             margin: 0;
             display: grid;
             grid-template-columns: 1fr 1fr; /* Creates two columns */
-            gap: 10px; /* Space between columns */
+            gap: 15px; /* Increased gap between columns */
             overflow-y: auto;
             flex-grow: 1; /* Makes the list items section take the remaining space */
         }
 
         ul li {
-            padding: 8px; /* Reduced padding for smaller item boxes */
-            background-color: #ffffff; /* White background for items */
+            padding: 12px; /* Increased padding for larger item boxes */
+            background-color: #005b99; /* Darker blue background for items */
             border-radius: 5px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-            color: #007bb5; /* More vibrant blue color for text */
+            color: #ffffff; /* White text color */
             text-align: center;
             font-weight: bold; /* Increased font weight for thicker letters */
+            font-size: 20px; /* Uniform font size for all list items */
             
             /* Center the text both horizontally and vertically */
             display: flex;
@@ -86,7 +88,7 @@
 
         /* Hover effect for list items */
         ul li:hover {
-            background-color: #007bb5; /* More saturated blue background on hover */
+            background-color: #004080; /* Even darker blue on hover */
             color: #ffffff; /* White text on hover */
             cursor: pointer;
         }
@@ -103,20 +105,20 @@
     <div class="container">
         <!-- Shopping List -->
         <div class="list">
-            <h2>Shopping List</h2>
+            <h2>SHOPPING LIST</h2>
             <ul>
                 {% for item in shopping_list %}
-                <li> {{ item }}</li>
+                <li>{{ item }}</li> <!-- Removed icon -->
                 {% endfor %}
             </ul>
         </div>
 
         <!-- Inventory -->
         <div class="list">
-            <h2>Inventory</h2>
+            <h2>INVENTORY</h2>
             <ul>
                 {% for item in inventory_list %}
-                <li> {{ item }}</li>
+                <li>{{ item }}</li> <!-- Removed icon -->
                 {% endfor %}
             </ul>
         </div>
